@@ -1,0 +1,9 @@
+#OS junk files
+Thumbs.db
+thumbs.db
+*DS_store
+
+#Visual studio files
+.xml
+seattle.osm
+*.log
