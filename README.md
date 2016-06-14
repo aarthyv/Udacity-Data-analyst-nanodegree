@@ -8,7 +8,7 @@ This repository contains project work for Udacity's [Data Analyst Nanodegree](ht
 - **P2** - Analyzing the NYC Subway Dataset
 - **P3**  - Data Wrangle OpenStreetMaps Data
 - **P4**  - Explore and Summarize Data
-- **P5**  - Identifying Fraud from Enron Email
+- **P5**  - Identify Fraud from Enron Email
 - **P6**  - Make Effective Data Visualization
 - **P7**  - Design an A/B test
 
