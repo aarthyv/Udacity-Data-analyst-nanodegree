@@ -1,0 +1,8 @@
+https://docs.mongodb.org/v2.6/reference/command/collStats/
+https://github.com/jdamiani27/Data-Wrangling-with-MongoDB/blob/master/Final_Project/OSM_wrangling.html
+http://www.tutorialspoint.com/mongodb/mongodb_data_modeling.htm
+http://www.w3schools.com/json/
+https://wiki.openstreetmap.org/wiki/Main_Page
+https://en.wikipedia.org/wiki/OpenStreetMap
+https://docs.mongodb.org/v2.6/reference/method/db.collection.stats/
+http://blog.mlab.com/2014/01/how-big-is-your-mongodb/
