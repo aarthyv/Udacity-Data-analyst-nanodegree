@@ -1,0 +1,1 @@
+This project was submitted as .RMD and HTML versions. To access the data and code, see the RMD file. To see the full completed project output, please follow the link <https://cdn.rawgit.com/aarthyv/Udacity-Data-analyst-nanodegree/master/P4/P4_final_project%20ver2.html>
