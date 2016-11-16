@@ -1,0 +1,96 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red56\green117\blue215;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\pard\sl576\sb960\sa240\pardirnatural\partightenfactor0
+
+\f0\fs48 \cf0 \nosupersub \ulnone Data visualization of reading scores for 4th graders in countries with English as first language, 2011\
+\pard\sl480\sb800\sa120\pardirnatural\partightenfactor0
+
+\fs40 \cf0 by Aarthy Vallur towards fulfillment of P6\
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+
+\fs24 \cf0 This Data visualization shows the average reading proficiency scores for 4th graders in 5 countries where English is taught as the first language along with the international average for 2011. The data was obtained from the NCES and is part of the Progress in International Reading Literacy Study (PIRLS) data at <http://nces.ed.gov/surveys/pirls/idepirls/> \
+\pard\sl576\sb960\sa240\pardirnatural\partightenfactor0
+
+\fs48 \cf0 Design\
+\pard\sl480\sb800\sa120\pardirnatural\partightenfactor0
+
+\fs40 \cf0 Preliminary exploration of data using Excel and R\
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+
+\fs24 \cf0 I chose the data because I am interested in how reading contributes to educational achievement evaluation at many levels. The original data set consists of reading scores for over 60 countries with many categories. I chose to compare reading scores in the presence and absence of amenities and facilities outside school, such as room, desk, table and internet, since these are variables that were objectively accounted for. I also chose advanced countries that teach english as the first language, such as US, Canada, England, Australia and Singapore to be able to compare without interference from factors such as language and economic differences on the students. I chose to include the international average as a means of comparison. I chose my parameters in \cf2 \ul \ulc2 PIRLS\cf0 \ulnone  (http://nces.ed.gov/surveys/pirls/idepirls/) and downloaded a series of data files. I then chose the conditions I wanted, namely, having or not having desk and table; having or not having either both or one of room and internet duration of study from 30 minutes- >2 hours and assembled my datafile,
+\f1 Data3.csv
+\f0 . When I explored the initial dataset using R, I found that bivariate analysis allowed to visualize the average reading scores in the presence or absence of a particular factor, such as desk, table, room or internet. A series of facet wrapped bivariate graphs revealed subtle differences among the countries.\
+\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 {{\NeXTGraphic Bivariate analysis.62648c616e964c769e3592add219a8c6.png \width14440 \height14920
+}¬}\
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+\cf0 I then realized that my takeaway from the visualization needs to be\
+\pard\tx456\tx720\li720\fi-720\sl288\sb360\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	1.	}Does having or not having a factor affect reading scores? Clearly, scores drop when students don t have desks or tables, with the largest drop seem when they don\'92t have room and internet.\
+\pard\tx456\tx720\li720\fi-720\sl288\sb240\sa120\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	2.	}How to countries compare between each other and the international average on any given factor?\
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+\cf0 Towards that end, I realized I needed a visualization that will allow easy comparisons between points and countries and any trends. So I then created a bar graph for the United states and overlaid other countries as lines. This created a good but confusing visual, since the y-axis scale was spread out clustering all the lines. Though this gave me a template to compare, it was not clear.\
+\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 {{\NeXTGraphic Bar and line plots.b8842fe033284d128d99b14c668938c8.jpeg \width9080 \height8140
+}¬}\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 \
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+\cf0 Also, looking at the data and the graphs, I realized that the duration of study was a personal factor that did not fit with the others, that were external, whose presence or absence can be objectively noted . So I removed it and wrangled the data to create 
+\f1 Data4.csv
+\f0  as the final datafile with 3 columns- Categories, comprising countries, Reading scores and Factors. With this I created an initial line plot with a zoomed in y- axis for better discernment of trends using dimple.js in 
+\f1 index_1.html
+\f0 . The line plots looked clean and easy to visualize. I then solicited feedback from 3 viewers:\
+\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 {{\NeXTGraphic Initial line plot.98a4f5e9fd314c9a9785e18ce34441ca.png \width20240 \height14080
+}¬}\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 \
+\pard\sl480\sb800\sa120\pardirnatural\partightenfactor0
+
+\fs40 \cf0 Feedback 1:\
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+
+\fs24 \cf0 I really like the line plots, since they are simple and distinct due to the colors used. It is easy to see that all countries are above international average and that, the factors are clearly similar in these countries. The data is interesting and a clear trend of dropping reading scores when an amenity is not present, especially for internet is visible. But the zoomed scale irks me a bit- are these differences even significant? I would like to see only lines I choose, so counties can be compared in any way the viewer chooses. This will make the data more visually informative.\
+\pard\sl480\sb800\sa120\pardirnatural\partightenfactor0
+
+\fs40 \cf0 Feedback 2:\
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+
+\fs24 \cf0 I like the dataset in that the colors and bubbles are distinct and there are not too many categories in the graph. I like the pointer and how it aligns all the points. But, the factors- desk and table , room and internet are misleading to me- does having desk or table mean the student also has a room? Or doe sit mean that a student with a room also has a desk? What is the overlap among these factors. nevertheless, clearly, internet is a factor in reading scores- without which there is a very visible drop. This seems to be more drastic for some countries like Singapore and Australia than others. A bit of interactivity will make this a very satisfactory visualization.\
+\pard\sl480\sb800\sa120\pardirnatural\partightenfactor0
+
+\fs40 \cf0 Feedback 3:\
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+
+\fs24 \cf0 Simple and clear visualization, but the data seems more complex. Are these strictly home amenities? Do the students have access to desk or internet elsewhere like a library? That is not clear. But clearly in the absence of amenities, reading scores drop, more in some cases. Why does Australia see this drop? How is it different from the other countries? Also, were the sample sizes comparable to begin with? Singapore will have less students than the US or Canada, surely. The visualization does justice to the chosen data though. It is easy to understand the major trend. I would like to see bright colors or some way to pop- up the lines.\
+\pard\sl576\sb960\sa240\pardirnatural\partightenfactor0
+
+\fs48 \cf0 Design incorporating feedback:\
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+
+\fs24 \cf0 Taking these feedback into account, I incorporated the following into my updated visualization, 
+\f1 index_2.html
+\f0 . It has\
+\pard\tx456\tx720\li720\fi-720\sl288\sb360\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	1.	}Interactive legends, which are click -enabled. Clicking filters that category out. This allows for viewer- driven comparisons of any of the categories.\
+\pard\tx456\tx720\li720\fi-720\sl288\sb240\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	2.	}Made the chart size smaller and encompassing.\
+\pard\tx456\tx720\li720\fi-720\sl288\sb240\sa120\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	3.	}Changed chart title to be more descriptive.\
+\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 {{\NeXTGraphic Final line plot with interactive legends.eb7e86b0ced34da1bbdacd21262325e2.png \width23300 \height14540
+}¬}\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 \
+\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 {{\NeXTGraphic Comparing 2 categories- US and International average.5106cda0cbd14a87b8dfdc4f076e8167.png \width23540 \height14800
+}¬}\pard\sb360\sa120\pardirnatural\qc\partightenfactor0
+\cf0 \
+\pard\sl288\sb240\pardirnatural\partightenfactor0
+\cf0 Interactive legends really drove home the message of how reading scores drop when certain amenities are absent, especially internet and showed the extent of the drop for each country. Comparisons between 2 or more categories became much easier. \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \nosupersub \ulnone \
+}
