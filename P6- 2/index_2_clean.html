@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="http://d3js.org/d3.v3.min.js">
+	</script>
+	<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js">
+	</script>
+	<style>
+	     h2 {
+	       color: black;
+	       text-align: center;
+	     }
+
+	     .axis {
+	       font-family: arial;
+	       font-size: 15px;
+	     }
+
+	</style>
+	<script type="text/javascript">
+	     function draw(data) {
+	       
+	     /*
+	       D3.js setup code
+	     */
+	          "use strict";
+	         var margin = 65,
+	             width = 1450 - margin,            
+	             height = 800 - margin;
+	         var title = d3.select("body")
+	          .append("h2")
+	          .text("Average reading scores in countries for 4th graders based on student's access to room and internet, 2011")
+
+	         var svg = d3.select("body")
+	           .append("svg")
+	             .attr("width", width + margin)
+	             .attr("height", height + margin)
+	           .append('g')
+	               .attr('class','chart');
+	      
+	     /*
+	       Dimple.js Chart construction code
+	     */
+	         var myChart = new dimple.chart(svg, data);
+	         var x = myChart.addCategoryAxis("x", "Factors"); 
+	         var y = myChart.addMeasureAxis("y", "Average reading score");
+	       // Zooming into the y-axis to see the differences better
+	         y.overrideMin = 400;
+	         y.overrideMax = 600;
+	       // Adding a line with bubbles for all categories
+
+	         myChart.addSeries("Categories", dimple.plot.line);
+	         myChart.addSeries("Categories", dimple.plot.bubble);
+
+	       // Adding legends that can be animated 
+	         
+	         var myLegend = myChart.addLegend(width*0.65, 120, width*0.25, 120, 'right');
+
+	         myChart.draw();
+	       // Adding legends to a list, legends are now orphaned and dont update with chart
+	         myChart.legends = [];
+	         svg.selectAll("title_text")
+	           .data(["Click legend to","show/hide Categories:"])
+	           .enter()
+	           .append("text")
+	             .attr("x", 499)
+	             .attr("y", function (d, i) { return 90 + i * 14; })
+	             .style("font-family", "sans-serif")
+	             .style("font-size", "10px")
+	             .style("color", "Black")
+	             .text(function (d) { return d; });
+	 
+	       // Get a unique list of Category values to use when clicking each legend rectangle
+	         var filterValues = dimple.getUniqueValues(data, "Categories");
+	       // Getting all the rectangles representinglegends
+	         myLegend.shapes.selectAll("rect")
+	         // Adding a click event to each rectangle
+	            .on("click", function (e) {
+	           // This indicates whether the item is already visible or not
+	              var hide = false;
+	              var newFilters = [];
+	              // Hiding clicked shape 
+	              filterValues.forEach(function (f) {
+	                if (f === e.aggField.slice(-1)[0]) {
+	                  hide = true;
+	                } else {
+	                  newFilters.push(f);
+	                }
+	              });
+	              // Hide or show toggle on clicking
+	              if (hide) {
+	                d3.select(this).style("opacity", 0.2);
+	              } else {
+	                newFilters.push(e.aggField.slice(-1)[0]);
+	                d3.select(this).style("opacity", 0.8);
+	              }
+	              // Updating the filters on clicking
+	              filterValues = newFilters;
+	             // Filtering the data on clicking
+	              myChart.data = dimple.filterData(data, "Categories", filterValues);
+	           // Passing a duration parameter for transition
+	              myChart.draw(800);
+	             });            
+	           };
+	</script>
+	<script type="text/javascript">
+	  /*
+	   Use D3 (not dimple.js) to load the CSV file
+	   and pass the contents of it to the draw function
+	   */
+	 d3.csv("Data6.csv", draw);
+	</script>
+
+	<title>
+	</title>
+</head>
+
+<body>
+</body>
+</html>
