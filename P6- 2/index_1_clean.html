@@ -1,76 +1,86 @@
-<!DOCTYPE html>
+< !DOCTYPE html >
 
-<html>
-<head>
-	<meta charset="utf-8">
-	<script src="http://d3js.org/d3.v3.min.js">
-	</script>
-	<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js">
-	</script>
-	<style>
-	        h2 {
-	          color: black;
-	          text-align: center;
-	        }
+	<
+	html >
+	<
+	head >
+	<
+	meta charset = "utf-8" >
+	<
+	script src = "http://d3js.org/d3.v3.min.js" >
+	<
+	/script> <
+	script src = "http://dimplejs.org/dist/dimple.v2.0.0.min.js" >
+	<
+	/script> <
+	style >
+	h2 {
+		color: black;
+		text - align: center;
+	}
 
-	        .axis {
-	          font-family: arial;
-	          font-size: 0.6em;
-	        }
-	</style>
-	<script type="text/javascript">
-	        function draw(data) {
-	          
-	        /*
-	          D3.js setup code
-	        */
+.axis {
+	font - family: arial;
+	font - size: 0.6e m;
+} <
+/style> <
+script type = "text/javascript" >
+	function draw(data) {
 
-	            "use strict";
-	            var margin = 75,
-	                width = 1400 - margin,
-	                height = 800 - margin;
-	            var title = d3.select("body")
-	             .append("h2")
-	             .text("Average reading scores in countries for 4th graders, 2011")
+		/*
+		  D3.js setup code
+		*/
 
-	            var svg = d3.select("body")
-	              .append("svg")
-	                .attr("width", width + margin)
-	                .attr("height", height + margin)
-	              .append('g')
-	                  .attr('class','chart');
+		"use strict";
+		var margin = 75,
+			width = 1400 - margin,
+			height = 800 - margin;
+		var title = d3.select("body")
+			.append("h2")
+			.text("Average reading scores in countries for 4th graders, 2011")
 
-	        /*
-	          Dimple.js Chart construction code
-	        */
-	          
-	            var myChart = new dimple.chart(svg, data);
+		var svg = d3.select("body")
+			.append("svg")
+			.attr("width", width + margin)
+			.attr("height", height + margin)
+			.append('g')
+			.attr('class', 'chart');
 
-	            var x = myChart.addCategoryAxis("x", "Factors"); 
-	            var y = myChart.addMeasureAxis("y", "Average reading score");
-	          // Zooming into the y-axis to see the differences better
-	            y.overrideMin = 400;
-	            y.overrideMax = 600;
-	          // Adding a line with bubbles for all categories
-	            myChart.addSeries("Categories", dimple.plot.line);
-	            myChart.addSeries("Categories", dimple.plot.bubble);
-	          // Adding legend        
-	            myChart.addLegend(width*0.65, 120, width*0.25, 120, 'right');   
-	            myChart.draw();
-	          };
-	</script>
-	<script type="text/javascript">
-	     /*
-	      Use D3 (not dimple.js) to load the CSV file
-	      and pass the contents of it to the draw function
-	      */
-	    d3.csv("Data/Data4.csv", draw);
-	</script>
+		/*
+		  Dimple.js Chart construction code
+		*/
 
-	<title>
-	</title>
-</head>
+		var myChart = new dimple.chart(svg, data);
 
-<body>
-</body>
-</html>
+		var x = myChart.addCategoryAxis("x", "Factors");
+		var y = myChart.addMeasureAxis("y", "Average reading score");
+		// Zooming into the y-axis to see the differences better
+		y.overrideMin = 400;
+		y.overrideMax = 600;
+		// Adding a line with bubbles for all categories
+		myChart.addSeries("Categories", dimple.plot.line);
+		myChart.addSeries("Categories", dimple.plot.bubble);
+		// Adding legend        
+		myChart.addLegend(width * 0.65, 120, width * 0.25, 120, 'right');
+		myChart.draw();
+	}; <
+/script> <
+script type = "text/javascript" >
+	/*
+	 Use D3 (not dimple.js) to load the CSV file
+	 and pass the contents of it to the draw function
+	 */
+	d3.csv("Data4.csv", draw); <
+/script>
+
+<
+title >
+	<
+	/title> <
+	/head>
+
+<
+body >
+	<
+	/body> <
+	/html>
